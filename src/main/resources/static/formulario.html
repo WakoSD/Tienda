@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <link href="css/menu.css" rel="stylesheet" href="url"/>
+    </head>
+    <body>
+
+        <header class="header" >
+            <nav class="nav">
+                <a class="logo nav-link" href="index.html">TechShop</a>
+                <ul class="nav-menu"> 
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="ejemplo4.html">&LeftTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="ejemplo2.html">&RightTriangleBar;</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="audios.html">Audios</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="videos.html">Videos</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="iframe.html">iFrame</a></li>
+                    <li class="nav-menu-item"><a class="nav-menu-link nav-link" href="formulario.html">Form</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h2>Ejemplo de un Form</h2>
+            <article>
+                <header><h3>Registro de Información</h3></header>
+                <form action="confirmacion.jsp" method="post">
+                    <input type="hidden" name="idUsuario" value="5556659"><!<!-- Esta parte se llenaria con base de datos, el value -->
+
+                    <label>Nombre: </label>
+                    <input type="text" 
+                           name="nombre" 
+                           placeholder="Nombre Completo"
+                           required><br>
+
+                    <label>Comida Favorita: </label><br>
+                    Koreana <input type="checkbox" name="koreana"><br>
+                    Española <input type="checkbox" name="espanola"><br>
+                    Alemana <input type="checkbox" name="alemana"><br><br>
+
+
+                    <label>Correo: </label>
+                    <input type="email" name="correo" placeholder="juan@gmail.com"> <br><br>
+
+                    <label>Fecha de reserva: </label>
+                    <input type="date" name="fecha"> <br><br>
+
+                    <label>Hora de reserva: </label>
+                    <input type="time" name="hora"> <br><br>
+
+                    <label>Requiere asistencia: </label>
+                    Si <input type="radio" name="asistencia" value="si">  
+                    No<input type="radio" name="asistencia" value="no"><br><br>
+
+                    <label>Código secreto de abordaje: </label>
+                    <input type="password" name="codigo" ><br><br>
+
+
+                    <input type="submit" name="enviar" value="Enviar">
+                </form>
+            </article>
+        </section>
+        <footer>
+            Derechos reservados &COPY; 2022
+        </footer>
+    </body>
+</html>
