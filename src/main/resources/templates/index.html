@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xlmns="http://www.w3.org/1999/xhtml">
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
     </head>
     <body>
-        <h1>Saludos</h1>
-        <p>[[${mensaje}]]</p>
+        
+        <header th:replace="layout/plantilla::header"/>
+        
         <h2>Información de clientes</h2>
+        <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
 
         <div th:if="${clientes !=null and !clientes.empty}">
             <table border="1">
@@ -17,12 +20,16 @@
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
                 </tr>
                 <tr th:each="cliente: ${clientes}">
                     <td>[[${cliente.nombre}]]</td>
                     <td>[[${cliente.apellidos}]]</td>
                     <td>[[${cliente.correo}]]</td>
                     <td>[[${cliente.telefono}]]</td>
+                    <td> <a th:href="@{/cliente/eliminar/} + ${cliente.idCliente}">Eliminar</td>
+                    <td> <a th:href="@{/cliente/modificar/} + ${cliente.idCliente}">Modificar</td>
                 </tr>
             </table> 
         </div>
@@ -31,7 +38,7 @@
             <h2>No hay clientes que mostrar</h2>
         </div>
 
-
+        <footer th:replace="layout/plantilla::footer"/>
 
     </body>
 </html>
