@@ -11,18 +11,31 @@
 
         <header th:replace="layout/plantilla::header"/>
         <div class="contenido">
-            <h2>Nuestro artículos </h2>
+            <h2>Información de articulos</h2>
+            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
 
             <div th:if="${articulos !=null and !articulos.empty}">
                 <table border="1">
                     <tr>
                         <th>Descripción</th>
                         <th>Precio</th>
+                        <th>Existencias</th>
+                        <th>Activo</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
                     </tr>
                     <tr th:each="articulo: ${articulos}">
                         <td>[[${articulo.descripcion}]]</td>
-                        <td style="text-align: right">[[${#numbers.formatDecima(articulo.precio,3,2}]]</td>
-                        <td><a th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">Agregar</a></td>
+                        <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
+                        <td style="text-align: center">[[${articulo.existencias}]]</td>
+                        <td style="text-align: center">
+                            <input type="checkbox"               
+                                   name="activo" 
+                                   th:checked="${articulo.activo}"
+                                   disabled="true">
+                        </td>
+                        <td> <a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
+                        <td> <a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
                     </tr>
                 </table> 
             </div>
@@ -31,7 +44,6 @@
                 <h2>No hay articulos que mostrar</h2>
             </div>
         </div>
-
 
         <footer th:replace="layout/plantilla::footer"/>
 

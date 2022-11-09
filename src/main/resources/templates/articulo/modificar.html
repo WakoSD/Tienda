@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xlmns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla::header"/>
+        <div class="contenido">
+            <h2>Información de articulo</h2>
+            <a th:href="@{/articulo/listado}">Regresar</a>
+            <hr/><!-- comment -->
+            <form th:action="@{/articulo/guardar}"
+                  method="post"
+                  th:object="${articulo}">
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                
+                <fieldset>
+                    <label for="nombre">Descripción</label>
+                    <input type="text" name ="nombre" th:field="*{descripcion}"/>
+                </fieldset>
+                <fieldset>
+                    <label for="detalle">Detalle</label>
+                    <textarea name ="detalle" th:field="*{detalle}" rows="6" cols="50"/>
+                </fieldset>
+                <fieldset>
+                    <label for="precio">Precio</label>
+                    <input type="number" name ="precio" th:field="*{precio}"/>
+                </fieldset>
+                <fieldset>
+                    <label for="existencias">Existencias</label>
+                    <input type="number" name ="existencias" th:field="*{existencias}"/>
+                </fieldset>
+                <fieldset>
+                    <label for="activo">Activo</label>
+                    <input type="checkbox" name ="activo" th:field="*{activo}"/>
+                </fieldset>
+                <hr/>
+                <input type="submit" value="Guardar" name="guardar"/>
+            </form>
+        </div>
+        <footer th:replace="layout/plantilla::footer"/>
+    </body>
+</html>
