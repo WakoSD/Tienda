@@ -11,18 +11,18 @@
 
         <header th:replace="layout/plantilla::header"/>
         <div class="contenido">
-            <h2>Información de articulos</h2>
-            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
+            <h2>[[#{articulo.titulo}]]</h2>
+            <a th:href="@{/articulo/nuevo}">[[#{articulo.nuevo}]]</a>
 
             <div th:if="${articulos !=null and !articulos.empty}">
                 <table border="1">
                     <tr>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Existencias</th>
-                        <th>Activo</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
+                        <th>[[#{articulo.descripcion}]]</th>
+                        <th>[[#{articulo.precio}]]</th>
+                        <th>[[#{articulo.existencias}]]</th>
+                        <th>[[#{articulo.activo}]]</th>
+                        <th>[[#{accion.eliminar}]]</th>
+                        <th>[[#{accion.actualizar}]]</th>
                     </tr>
                     <tr th:each="articulo: ${articulos}">
                         <td>[[${articulo.descripcion}]]</td>
@@ -34,14 +34,14 @@
                                    th:checked="${articulo.activo}"
                                    disabled="true">
                         </td>
-                        <td> <a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
-                        <td> <a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
+                        <td> <a th:href="@{/articulo/eliminar/} + ${articulo.idArticulo}">[[#{accion.eliminar}]]</a></td>
+                        <td> <a th:href="@{/articulo/modificar/} + ${articulo.idArticulo}">[[#{accion.actualizar}]]</a></td>
                     </tr>
                 </table> 
             </div>
 
             <div th:if="${articulos ==null or articulos.empty}">
-                <h2>No hay articulos que mostrar</h2>
+                <h2>[[#{articulo.no_mostrar}]]</h2>
             </div>
         </div>
 

@@ -10,8 +10,8 @@
     <body>
         <header th:replace="layout/plantilla::header"/>
         <div class="contenido">
-            <h2>Información de cliente</h2>
-            <a th:href="@{/cliente/listado}">Regresar</a>
+            <h2>[[#{cliente.datos}]]</h2>
+            <a th:href="@{/cliente/listado}">[[#{accion.regresar}]]</a>
             <hr/><!-- comment -->
             <form th:action="@{/cliente/guardar}"
                   method="post"
@@ -20,27 +20,27 @@
                 <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/>
                 
                 <fieldset>
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">[[#{cliente.nombre}]]</label>
                     <input type="text" name ="nombre" th:field="*{nombre}"/>
                 </fieldset>
                 <fieldset>
-                    <label for="apellidos">Apellidos</label>
+                    <label for="apellidos">[[#{cliente.apellidos}]]</label>
                     <input type="text" name ="apellidos" th:field="*{apellidos}"/>
                 </fieldset>
                 <fieldset>
-                    <label for="correo">Correo</label>
+                    <label for="correo">[[#{cliente.correo}]]</label>
                     <input type="email" name ="correo" th:field="*{correo}"/>
                 </fieldset>
                 <fieldset>
-                    <label for="telefono">Teléfono</label>
+                    <label for="telefono">[[#{cliente.telefono}]]</label>
                     <input type="tel" name ="telefono" th:field="*{telefono}"/>
                 </fieldset>
                 <fieldset>
-                    <label for="limite">Límite de Crédito</label>
+                    <label for="limite">[[#{cliente.limite}]]</label>
                     <input type="numer" name ="limite" th:field="*{credito.limite}"/>
                 </fieldset>
                 <hr/>
-                <input type="submit" value="Guardar" name="guardar"/>
+                <button type="submit" th:text="#{accion.guardar}"/>
             </form>
         </div>
         <footer th:replace="layout/plantilla::footer"/>

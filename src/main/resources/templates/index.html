@@ -2,33 +2,32 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
       xlmns="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla::head">
         <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
         <header th:replace="layout/plantilla::header"/>
         <div class="contenido">
-            <h2>Nuestro artículos </h2>
+            <h2>[[#{index.titulo}]]</h2>
 
             <div th:if="${articulos !=null and !articulos.empty}">
                 <table border="1">
                     <tr>
-                        <th>Descripción</th>
-                        <th>Precio</th>
+                        <th>[[#{articulo.descripcion}]]</th>
+                        <th>[[#{articulo.precio}]]</th>
+                        <th>[[#{articulo.comprar}]]</th>
                     </tr>
                     <tr th:each="articulo: ${articulos}">
                         <td>[[${articulo.descripcion}]]</td>
-                        <td style="text-align: right">[[${#numbers.formatDecima(articulo.precio,3,2}]]</td>
-                        <td><a th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">Agregar</a></td>
+                        <td style="text-align: right">[[${#numbers.formatDecimal(articulo.precio,3,2)}]]</td>
+                        <td><a th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">[[#{accion.agregar}]]</a></td>
                     </tr>
                 </table> 
             </div>
 
             <div th:if="${articulos ==null or articulos.empty}">
-                <h2>No hay articulos que mostrar</h2>
+                <h2>[[#{articulo.no_mostrar}]]</h2>
             </div>
         </div>
 
