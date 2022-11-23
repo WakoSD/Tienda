@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xlmns="http://www.w3.org/1999/xhtml">
+    <head th:replace="layout/plantilla::head">
+        <title>TechShop</title>
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla::header"/>
+        <section id="actions" class="py-4 mb-4 bg-light">
+            <div>
+                <div class="row"></div>
+            </div>
+        </section>
+        <section id="login" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto" >
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{login.login}]]</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title">
+                                    [[#{e403.titulo}]]
+                                </div>
+                                <p class="card-text">[[#{e403.texto}]]</p>
+                                <a class="card-link"  th:href="@{/}">[[#{accion.regresar}]]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <footer th:replace="layout/plantilla::footer"/>
+
+    </body>
+</html>

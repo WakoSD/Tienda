@@ -6,8 +6,8 @@
     <head th:fragment="head">
         <title>TechShop</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
@@ -23,7 +23,7 @@
                         <span class="nav-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav" sec:authorize="hasRole('ROLE_VENDEDOR')">
                             <li class="nav-item px-2">
                                 <a th:href="@{/cliente/listado}" 
                                    class="nav-menu-link nav-link" 
@@ -39,13 +39,13 @@
                                    class="nav-menu-link nav-link" 
                                    th:text="#{plantilla.categorias}">Categorias</a>
                             </li>
-                            <li class="nav-item px-2">
+                            <li class="nav-item px-2" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <a th:href="@{/usuario/listado}" 
                                    class="nav-menu-link nav-link" 
                                    th:text="#{plantilla.usuarios}">Usuarios</a>
                             </li>
                         </ul><!-- comment -->
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav ml-auto" sec:authorize="isAuthenticated()">
                             <li class="nav-item mr-3">
                                 <a href="#" 
                                    class="nav-link">
@@ -66,13 +66,28 @@
                     </div>
                 </div>
             </nav>
+            <section id="main-header" class="py-2 bg-success text-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>
+                                <i class="fas fa-cog"></i>  [[#{plantilla.titulo}]]
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </header>
 
-        <footer th:fragment="footer" class="footer">
-            <p>&COPY; [[#{plantilla.derechos}]]  |
-                <a th:href="@{/(lang=es)}">ES</a>  |
-                <a th:href="@{/(lang=en)}">EN</a>
-            </p>
+        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">&COPY; [[#{plantilla.derechos}]]  |
+                        <a th:href="@{/(lang=es)}">ES</a>  |
+                        <a th:href="@{/(lang=en)}">EN</a>
+                    </p>
+                </div>
+            </div>
         </footer>
     </body>
 </html>
